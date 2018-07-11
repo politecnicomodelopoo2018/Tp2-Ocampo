@@ -7,3 +7,6 @@ class Familia (object):
         self.nombre = nombre
         self.lema = lema
         self.enemigos = enemigos
+
+
+    def selectFamilia (self,nombre, lema, enemigos):
