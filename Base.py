@@ -1,6 +1,6 @@
 import pymysql
 
-class Db (object):
+class BD (object):
     __instance = None
     __host = None
     __user = None
@@ -8,9 +8,9 @@ class Db (object):
     __db = None
 
     def __new__(cls, *args, **kwargs):
-        if Db().__instance is None:
-            Db().__instance = object.__new__(cls)
-        return Db().__instance
+        if BD().__instance is None:
+            BD().__instance = object.__new__(cls)
+        return BD().__instance
 
     def setConexion(self, host, user, password, db):
         self.__host = host

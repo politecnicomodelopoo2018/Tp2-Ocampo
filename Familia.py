@@ -1,3 +1,5 @@
+from Base import *
+
 class Familia (object):
 
     nombre = None
@@ -14,10 +16,10 @@ class Familia (object):
         BD().run("Select * from familia Where lema = " + str(lema) + ";")
 
     def setFamilia(self, nombre, lema, enemigos):
-        BD().run("Insert into Copa(Nombre, lema, familia_enemigos) values (" + str(nombre) + "'," + str(lema) + "," + str(enemigos))
+        BD().run("Insert into Copa(Nombre, lema, Familia_Enemigos) values (" + str(nombre) + "," + str(lema) + "," + str(enemigos))
 
     def updateFamilia(self, nombre, lema, enemigos):
-        BD().run("Update Familia Set Nombre = '" + nombre + "', lema = " + str(lema) + " where Familia_Enemgios = " + str(enemigos) + ";")
+        BD().run("Update Familia Set Nombre = '" + nombre + "', lema = '" + lema + "', Familia_Enemigos = '" + enemigos + "' Where Nombre = "+str(nombre)+";")
 
     def deleteFamilia(self, nombre):
 
