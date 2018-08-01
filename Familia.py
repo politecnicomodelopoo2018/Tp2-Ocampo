@@ -13,7 +13,7 @@ class Familia (object):
 
     def selectFamilia (self,lema):
 
-        BD().run("Select * from familia Where lema = " + str(lema) + ";")
+        BD().run("Select * from Familia Where lema = " + str(lema) + ";")
 
     def setFamilia(self, nombre, lema, enemigos):
         BD().run("Insert into Copa(Nombre, lema, Familia_Enemigos) values (" + str(nombre) + "," + str(lema) + "," + str(enemigos))
