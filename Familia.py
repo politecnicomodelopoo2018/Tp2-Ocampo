@@ -16,7 +16,7 @@ class Familia (object):
         BD().run("Select * from Familia Where lema = " + str(lema) + ";")
 
     def setFamilia(self, nombre, lema, enemigos):
-        BD().run("Insert into Copa(Nombre, lema, Familia_Enemigos) values (" + str(nombre) + "," + str(lema) + "," + str(enemigos))
+        BD().run("Insert into Familia(Nombre, lema, Familia_Enemigos) values (" + str(nombre) + "," + str(lema) + "," + str(enemigos))
 
     def updateFamilia(self, nombre, lema, enemigos):
         BD().run("Update Familia Set Nombre = '" + nombre + "', lema = '" + lema + "', Familia_Enemigos = '" + enemigos + "' Where Nombre = "+str(nombre)+";")
