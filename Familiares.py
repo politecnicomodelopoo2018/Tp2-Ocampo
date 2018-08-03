@@ -13,7 +13,7 @@ class Familiares (object):
 
     def selectFamiliares (self, Nombre):
 
-        BD().run("Select * from Familiares Where lema = " + str(Nombre) + ";")
+        BD().run("Select * from Familiares Where Nombre = " + str(Nombre) + ";")
 
     def setFamiliares(self, Nombre, Edad, Familia_Nombre):
         BD().run("Insert into Familiares(Nombre, Edad, Familia_Nombre) values (" + str(Nombre) + "," + Edad + "," + str(Familia_Nombre))
