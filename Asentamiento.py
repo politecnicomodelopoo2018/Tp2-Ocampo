@@ -8,6 +8,7 @@ class Asentamiento (object):
     def __init__(self, Nombre, Ubicacion, Familia_Nombre):
         self.Nombre = Nombre
         self.Ubicacion = Ubicacion
+        self.Familia_Nombre = Familia_Nombre
 
     def selectAsentamiento (self,Nombre):
 
