@@ -2,6 +2,11 @@
 
 # -*- coding: utf-8 -*-
 
+from Base import *
+from Familia import *
+from Familiares import *
+from Asentamiento import *
+from Ocupacion import *
 import os
 
 
@@ -58,6 +63,8 @@ while 1:
 
     elif opcionMenu == "9":
 
+        os.system('clear')
+
         break
 
     else:
@@ -65,3 +72,4 @@ while 1:
         os.system('clear')
 
         input("No has pulsado ninguna opción correcta...\npulsa una tecla para continuar")
+
