@@ -6,9 +6,14 @@ class Familiares (object):
     Edad = None
     Familia_Nombre = None
 
-    def __init__(self, Nombre, Edad, Familia_Nombre):
+
+    def setNombre (self, Nombre):
         self.Nombre = Nombre
+
+    def setEdad(self, Edad):
         self.Edad = Edad
+
+    def setFamiliaNombre (self, Familia_Nombre):
         self.Familia_Nombre = Familia_Nombre
 
     def selectFamiliares (self, Nombre):

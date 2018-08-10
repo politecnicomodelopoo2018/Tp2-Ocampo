@@ -1,75 +1,45 @@
-#!/usr/bin/python
-
-# -*- coding: utf-8 -*-
-
 from Base import *
-from Familia import *
-from Familiares import *
-from Asentamiento import *
-from Ocupacion import *
-import os
+
+from Familia import Familia
+from Familiares import Familiares
+from Asentamiento import Asentamiento
+
+BD().SetConnection('127.0.0.1', 'root', 'alumno', 'mydb')
+
+opcion = None
+Fam = Familia()
+Fams = Familiares()
+Asen = Asentamiento()
 
 
-def menu():
+while opcion != 11:
+    print("Familia")
+    print("1- Alta")
+    print("2- Baja ")
+    print("3- Modificacion")
+    print("4- ListaDeReinos")
+    print("Familiares")
+    print("5- Alta")
+    print("6- Baja")
+    print("7- Modificacion")
+    print("Asentamiento")
+    print("8- Alta")
+    print("9- Baja")
+    print("10- Modificacion")
+    print("11- Salir")
+    opcion = int(input())
 
-    os.system('clear')
-
-    print("Selecciona una opción")
-
-    print("\t1 - Inserts")
-
-    print("\t2 - Update")
-
-    print("\t3 - Delete")
-
-    print("\t4 - Selects")
-
-    print("\t9 - salir")
+    if opcion == 1:
+        print("Nombre familia")
+        name = input()
+        Fam.setNombre(name)
+        print("lema")
+        lema = input()
+        Fam.setLema(lema)
+        print("enemigos")
+        enemigos = input()
+        Fam.setEnemigos(enemigos)
+        Fam.setFamilia(name, lema, enemigos)
 
 
-while 1:
-
-    # Mostramos el menu
-
-    menu()
-
-    # solicituamos una opción al usuario
-
-    opcionMenu = input("inserta una opcion \n")
-
-    if opcionMenu == "1":
-
-        os.system('clear')
-
-        input("Has pulsado la opcion de Inserts...\npulsa una tecla para continuar")
-
-    elif opcionMenu == "2":
-
-        os.system('clear')
-
-        input("Has pulsado la opcion de Update...\npulsa una tecla para continuar")
-
-    elif opcionMenu == "3":
-
-        os.system('clear')
-
-        input("Has pulsado la opcion de Delete...\npulsa una tecla para continuar")
-
-    elif opcionMenu == "4":
-
-        os.system('clear')
-
-        input("Has pulsado la opcion de Selects...\npulsa una tecla para continuar")
-
-    elif opcionMenu == "9":
-
-        os.system('clear')
-
-        break
-
-    else:
-
-        os.system('clear')
-
-        input("No has pulsado ninguna opción correcta...\npulsa una tecla para continuar")
 

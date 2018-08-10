@@ -6,13 +6,17 @@ class Familia (object):
     lema = None
     enemigos = None
 
-    def __init__(self, nombre, lema, enemigos):
+    def setNombre (self, nombre):
         self.nombre = nombre
+
+    def setLema (self,lema):
         self.lema = lema
+
+    def setEnemigos (self,enemigos):
         self.enemigos = enemigos
 
-    def setFamilia(self, nombre, lema, enemigos):
-        BD().run("Insert into Familia(Nombre, lema, Familia_Enemigos) values (" + str(nombre) + "," + str(lema) + "," + str(enemigos))
+    def setFamilia(self):
+        BD().run("INSERT INTO Familia (Nombre, lema, Familia_Enemigos) VALUES ('%s', '%s', '%s',)" % (self.Nombre, self.lema, self.Familia_Enemigos))
 
     def selectFamilia(self, lema):
         BD().run("Select * from Familia Where lema = " + str(lema) + ";")

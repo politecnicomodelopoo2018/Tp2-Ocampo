@@ -5,10 +5,17 @@ class Asentamiento (object):
     Ubicacion = None
     Familia_Nombre = None
 
-    def __init__(self, Nombre, Ubicacion, Familia_Nombre):
+
+
+    def setNombre (self, Nombre):
         self.Nombre = Nombre
+
+    def setUbicacion (self, Ubicacion):
         self.Ubicacion = Ubicacion
+
+    def setFamilia_Nombre (self, Familia_Nombre):
         self.Familia_Nombre = Familia_Nombre
+
 
     def selectAsentamiento (self,Nombre):
 
