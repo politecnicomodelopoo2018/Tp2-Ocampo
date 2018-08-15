@@ -5,35 +5,47 @@ class Ocupacion (object):
    Tipo = None
    Familiares_Nombre = None
 
-   def __init__(self, idOcupacion, Tipo, Familiares_Nombre):
-       self.idOcupacion = idOcupacion
+   def setOcupacion(self, Tipo):
        self.Tipo = Tipo
-       self.Familiares_Nombre = Familiares_Nombre
 
    def selectOcupacion (self, idOcupacion):
 
        BD().run("Select * from Ocupacion Where idOcupacion = " + idOcupacion + ";")
+
    #Cambiar insert por el otro
-   def setOcupacion(self, idOcupacion, Tipo, Familiares_Nombre):
-       BD().run("Insert into Ocupacion(idOcupacion ,Tipo, Familiares_Nombre) values (" + str(Tipo)+ "," + Familiares_Nombre)
 
-   def updateOcupacion(self, Tipo, Familiares_Nombre):
-       BD().run("Update Ocupacion Set Tipo = '"+Tipo+"', Familiares_Nombre = '"+Familiares_Nombre+"' Where Tipo = "+str(Tipo)+";")
+   def setOcupa(self):
+       cursor=BD().run("Insert INTO Ocupacion (idOcupacion, Tipo, Familiares_idFamiliar)values (null ,'" + self.Tipo + "',null);")
+       self.idFamilia = cursor.lastrowid
 
-   def deleteOcupacion(self, Tipo):
+   def updateOcupacion(self):
+       BD().run("update Ocupacion set Tipo = '" + self.Tipo + "'  where idOcupacion = '" + str(self.idOcupacion) + "';")
 
-       BD().run("Delete from Ocupacion where Tipo = '" + str(Tipo) + "';")
+   def deleteOcupacion(self):
+       BD().run("DELETE FROM Ocupacion WHERE idOcupacion = '%s'" % (self.idOcupacion))
 
 
    @staticmethod
    def ListaOcupacion():
-       lista=[]
-       bd = BD().run("SELECT * FROM Ocupacion")
-       for item in bd:
-           ocupa = Ocupacion()
-           ocupa.idOcupacion =  item["idOcupacion"]
-           ocupa.Tipo= item["Tipo"]
-           ocupa.Familiares_Nombre = item["Familiares_Nombre"]
-           lista.append(ocupa)
-       return lista
+        lista=[]
+        bd = BD().run("SELECT * FROM Ocupacion;")
 
+        for item in bd:
+            lista.append(item)
+
+        return lista
+
+
+   @staticmethod
+
+   def unaOcupacion(unIDOcu):
+
+
+        d = BD().run("Select * from Ocupacion where idOcupacion = '" + str(unIDOcu) + "';")
+        lista = d.fetchall()
+        ocu = Ocupacion()
+
+        ocu.idOcupacion = lista[0]["idOcupacion"]
+        ocu.Tipo = lista[0]["Tipo"]
+       # ocu.Familiares_Nombre = lista [0]["Familiares_idFamiliar"]
+        return ocu

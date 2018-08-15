@@ -18,7 +18,7 @@ class Familiares (object):
        BD().run("update Familiares set Nombre = '" + self.Nombre + "', Edad = '"+self.Edad+"'  where idFamiliar = '" + str(self.idFamiliar) + "';")
 
    def deleteFamiliares(self):
-       BD().run("DELETE FROM Familia WHERE idFamilia = '%s'" % (self.idFamiliar))
+       BD().run("DELETE FROM Familiares WHERE idFamiliar = '%s'" % (self.idFamiliar))
 
    @staticmethod
    def ListaFamiliares():

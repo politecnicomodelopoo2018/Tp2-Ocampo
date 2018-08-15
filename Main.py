@@ -3,6 +3,7 @@ from Base import *
 from Familia import *
 from Familiares import Familiares
 from Asentamiento import Asentamiento
+from Ocupacion import Ocupacion
 
 BD().SetConnection('127.0.0.1', 'root', 'alumno', 'mydb')
 
@@ -10,9 +11,9 @@ opcion = None
 Fam = Familia()
 Fams = Familiares()
 Asen = Asentamiento()
+Ocu = Ocupacion()
 
-
-while opcion != 13:
+while opcion != 17:
    print("Familia")
    print("1- Alta")
    print("2- ListaDeFamilia ")
@@ -28,8 +29,16 @@ while opcion != 13:
    print("10- Baja")
    print("11- Modificacion")
    print("12- ListaAsentamientos")
-   print("13- Salir")
+   print("Ocupacion")
+   print("13- Alta")
+   print("14- Baja")
+   print("15- Modificacion")
+   print("16- ListaOcupaciones")
+   print("17- Salir")
    opcion = int(input())
+
+
+#Familia
 
    #Dar alta Familia
    if opcion == 1:
@@ -38,7 +47,7 @@ while opcion != 13:
        Fam.setFam(name, lema)
        Fam.setFamilia()#ver
 
-   #Dar listar Familia
+   #Listar Familia
    elif opcion == 2:
        print(Familia.ListaFamilias())
 
@@ -64,11 +73,14 @@ while opcion != 13:
 
         print(Familia.ListaFamilias())
 
-        deleteAse = int(input("Ingrese el id de la Familia que desea eliminar: "))
+        deleteFam= int(input("Ingrese el id de la Familia que desea eliminar: "))
 
-        Asenn = Familia.unaFamilia(deleteAse)
+        Fam = Familia.unaFamilia(deleteFam)
 
-        Asenn.deleteFamilia()
+        Fam.deleteFamilia()
+
+
+#Familiares
 
         # Dar alta Familiares
    if opcion == 5:
@@ -77,24 +89,24 @@ while opcion != 13:
        Fams.setFamilias(name, edad)
        Fams.setFamiliares()  # ver
 
-       # Dar listar Familiares
+       # Lista Familiares
    elif opcion == 6:
-       print(Familia.ListaFamiliares())
+       print(Familiares.ListaFamiliares())
 
        # Modificar Familiares
    elif opcion == 7:
 
        print(Familiares.ListaFamiliares())
 
-       updateAsen = int(input("Ingrese el id del familiar que desea modificar: "))
+       updateFams = int(input("Ingrese el id del familiar que desea modificar: "))
 
-       Aseen = Familiares.unFamiliar(updateAsen)
+       Fams = Familiares.unFamiliar(updateFams)
 
-       Aseen.Nombre = input("Escriba el nombre del familiar: ")
+       Fams.Nombre = input("Escriba el nombre del familiar: ")
 
-       Aseen.Edad = input("Escriba el edad del familiar: ")
+       Fams.Edad = input("Escriba el edad del familiar: ")
 
-       Aseen.updateFamiliares()
+       Fams.updateFamiliares()
 
 
 
@@ -103,12 +115,14 @@ while opcion != 13:
 
        print(Familiares.ListaFamiliares())
 
-       deleteAse = int(input("Ingrese el id de la Familiar que desea eliminar: "))
+       deletefams = int(input("Ingrese el id de la Familiar que desea eliminar: "))
 
-       Asenn = Familiares.unFamiliar(deleteAse)
+       Fams = Familiares.unFamiliar(deletefams)
 
-       Asenn.deleteFamiliares()
+       Fams.deleteFamiliares()
 
+
+#Asentamiento
 
     #Alta Asentamiento
    elif opcion == 9:
@@ -122,9 +136,9 @@ while opcion != 13:
    elif opcion ==10:
        print(Asentamiento.ListaAsen())
 
-       deleteAse = int(input("Ingrese el id del Asentamiento que desea eliminar: "))
+       deleteAsen = int(input("Ingrese el id del Asentamiento que desea eliminar: "))
 
-       Asenn = Asentamiento.unAsentamiento(deleteAse)
+       Asenn = Asentamiento.unAsentamiento(deleteAsen)
 
        Asenn.deleteAsentamiento()
 
@@ -147,3 +161,44 @@ while opcion != 13:
     #Lista Asentamiento
    elif opcion == 12:
        print(Asentamiento.ListaAsen())
+
+
+
+#Ocupacion
+
+
+    #Alta Ocupacion
+   elif opcion == 13:
+
+       tipo = input("Tipo de ocupacion")
+       Ocu.setOcupacion(tipo)
+       Ocu.setOcupa()  # ver
+
+
+    #Baja Ocupacion
+   elif opcion ==14:
+       print(Ocu.ListaOcupacion())
+
+       deleteOcu = int(input("Ingrese el id del Ocupacion que desea eliminar: "))
+
+       Ocu = Ocu.unaOcupacion(deleteOcu)
+
+       Ocu.deleteOcupacion()
+
+    #Modi Asentamiento
+   elif opcion == 15:
+
+       print(Ocu.ListaOcupacion())
+
+       updateOcu = int(input("Ingrese el id de la Ocupacion que desea modificar: "))
+
+       Ocu = Ocu.unaOcupacion(updateOcu)
+
+       Ocu.Tipo = input("Escriba el tipo de Ocupacion: ")
+
+       Ocu.updateOcupacion()
+
+
+    #Lista Asentamiento
+   elif opcion == 16:
+       print(Ocu.ListaOcupacion())
