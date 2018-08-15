@@ -1,29 +1,59 @@
 from Base import *
 
 class Familia (object):
+   idFamilia = None
+   nombre = None
+   lema = None
+   enemigos = None
 
-    nombre = None
-    lema = None
-    enemigos = None
+   def setFam (self, nom, lem):
+       self.nombre = nom
+       self.lema = lem
 
-    def setNombre (self, nombre):
-        self.nombre = nombre
+   def setFamilia(self):
+       cursor=BD().run("Insert INTO Familia (idFamilia, Nombre, lema, Familia_idFamilia)values (null ,'" + self.nombre + "','" + self.lema + "',null);")
+       self.idFamilia = cursor.lastrowid
+       # "','" + self.enemigos
 
-    def setLema (self,lema):
-        self.lema = lema
+   def selectFamilia(self, idFamilia):
+       BD().run("Select * from Familia Where idFamilia = " + idFamilia + ";")
 
-    def setEnemigos (self,enemigos):
-        self.enemigos = enemigos
+   def updateFamilia(self):
 
-    def setFamilia(self):
-        BD().run("INSERT INTO Familia (Nombre, lema, Familia_Enemigos) VALUES ('%s', '%s', '%s',)" % (self.Nombre, self.lema, self.Familia_Enemigos))
+       BD().run("update Familia set Nombre = '" + self.nombre + "', lema = '"+self.lema+"'  where idFamilia = '" + str(self.idFamilia) + "';")
 
-    def selectFamilia(self, lema):
-        BD().run("Select * from Familia Where lema = " + str(lema) + ";")
+   def deleteFamilia(self):
 
-    def updateFamilia(self, nombre, lema, enemigos):
-        BD().run("Update Familia Set Nombre = '" + nombre + "', lema = '" + lema + "', Familia_Enemigos = '" + enemigos + "' Where Nombre = "+str(nombre)+";")
+       BD().run("DELETE FROM Familia WHERE idFamilia = '%s'" % (self.idFamilia))
 
-    def deleteFamilia(self, nombre):
+   @staticmethod
+   def ListaFamilias():
+        lista=[]
+        bd = BD().run("SELECT * FROM Familia;")
 
-        BD().run("Delete from Familia where Nombre = '" + str(nombre) + "';")
+        for item in bd:
+
+         #  Fami.idFamilia = item["idFamilia"]
+          # Fami.nombre= item["Nombre"]
+          # Fami.lema = item["lema"]
+           #Fami.enemigos = item["Familia_idFamilia"]
+            lista.append(item)
+
+        return lista
+
+
+   @staticmethod
+
+   def unaFamilia(unIDFam):
+
+
+        d = BD().run("Select * from Familia where idFamilia = '" + str(unIDFam) + "';")
+        lista = d.fetchall()
+        Family = Familia()
+
+        Family.idFamilia = lista[0]["idFamilia"]
+        Family.nombre = lista[0]["Nombre"]
+        Family.lema = lista[0]["lema"]
+        Family.enemigos = lista[0]["Familia_idFamilia"]
+
+        return Family
