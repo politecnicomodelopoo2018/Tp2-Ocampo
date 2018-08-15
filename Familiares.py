@@ -6,38 +6,43 @@ class Familiares (object):
    Edad = None
    Familia_Nombre = None
 
-   def setFamilias (self, idFamiliar, Nombre, Edad, Familia_Nombre):
-       self.idFamiliar = idFamiliar
+   def setFamilias (self, Nombre, Edad):
        self.Nombre = Nombre
        self.Edad = Edad
-       self.Familia_Nombre = Familia_Nombre
-#Ver de poner self.idFamiliar
-   def selectFamiliares (self):
 
-       BD().run("Insert INTO Familia values (Null ,'" + self.Nombre + "','" + self.Edad + "'," + "Null" + ")")
-
-   def setFamiliares(self, idFamiliar, Nombre, Edad, Familia_Nombre):
-       self.setFamilias(idFamiliar ,Nombre,Edad, Familia_Nombre)
-       BD().run("INSERT INTO Familiares Values ('%s', '%s', '%s', '%s')" % (self.idFamiliar, self.Nombre, self.Edad, self.Familia_Nombre))
-
+   def setFamiliares(self):
+       cursor=BD().run("Insert INTO Familiares (idFamiliar, Nombre, Edad, Familia_idFamilia)values (null ,'" + self.Nombre + "','" + self.Edad + "',null);")
+       self.idFamiliar = cursor.lastrowid
 
    def updateFamiliares(self):
-       BD().run("UPDATE Familiares SET idFamiliar = '%s', Nombre = '%s',  Edad = '%s', Familia_Nombre = '%s'" "Where Nombre = %s" % (self.idFamiliar, self.Nombre, self.Edad, self.Familia_Nombre))
-
+       BD().run("update Familiares set Nombre = '" + self.Nombre + "', Edad = '"+self.Edad+"'  where idFamiliar = '" + str(self.idFamiliar) + "';")
 
    def deleteFamiliares(self):
-       BD().run("DELETE FROM Familiares WHERE idFamiliar = '%s'" % (self.idFamiliar))
+       BD().run("DELETE FROM Familia WHERE idFamilia = '%s'" % (self.idFamiliar))
 
    @staticmethod
    def ListaFamiliares():
-       lista=[]
-       bd = BD().run("SELECT * FROM Familiares")
-       for item in bd:
-           familiar = Familiares()
-           familiar.idFamiliar = item["idFamiliar"]
-           familiar.Nombre= item["Nombre"]
-           familiar.Edad = item["Edad"]
-           familiar.Familia_Nombre = item["Familia_Nombre"]
-           lista.append(familiar)
-       return lista
+        lista=[]
+        bd = BD().run("SELECT * FROM Familiares;")
 
+        for item in bd:
+            lista.append(item)
+
+        return lista
+
+
+   @staticmethod
+
+   def unFamiliar(unIDFam):
+
+
+        d = BD().run("Select * from Familiares where idFamiliar = '" + str(unIDFam) + "';")
+        lista = d.fetchall()
+        Family = Familiares()
+
+        Family.idFamiliar = lista[0]["idFamiliar"]
+        Family.Nombre = lista[0]["Nombre"]
+        Family.Edad = lista[0]["Edad"]
+        Family.Familia_Nombre = lista[0]["Familia_idFamilia"]
+
+        return Family

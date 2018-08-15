@@ -12,21 +12,23 @@ Fams = Familiares()
 Asen = Asentamiento()
 
 
-while opcion != 11:
+while opcion != 13:
    print("Familia")
    print("1- Alta")
-   print("2- Baja ")
+   print("2- ListaDeFamilia ")
    print("3- Modificacion")
-   print("4- ListaDeFamilia")
+   print("4- Baja")
    print("Familiares")
    print("5- Alta")
-   print("6- Baja")
+   print("6- ListarFamiliares")
    print("7- Modificacion")
+   print("8- Baja")
    print("Asentamiento")
-   print("8- Alta")
-   print("9- Baja")
-   print("10- Modificacion")
-   print("11- Salir")
+   print("9- Alta")
+   print("10- Baja")
+   print("11- Modificacion")
+   print("12- ListaAsentamientos")
+   print("13- Salir")
    opcion = int(input())
 
    #Dar alta Familia
@@ -36,19 +38,18 @@ while opcion != 11:
        Fam.setFam(name, lema)
        Fam.setFamilia()#ver
 
-   #Dar baja Familia
+   #Dar listar Familia
    elif opcion == 2:
-       print('hola')
-
+       print(Familia.ListaFamilias())
 
    #Modificar Familia
    elif opcion == 3:
 
         print(Familia.ListaFamilias())
 
-        updateFamily = int(input("Ingrese el id de la familia que desea modificar: "))
+        updateFamiliares = int(input("Ingrese el id de la familia que desea modificar: "))
 
-        Fam = Familia.unaFamilia(updateFamily)
+        Fam = Familia.unaFamilia(updateFamiliares)
 
         Fam.nombre = input("Escriba el nombre de la familia: ")
 
@@ -56,19 +57,78 @@ while opcion != 11:
 
         Fam.updateFamilia()
 
-        print(Fam.nombre, Fam.lema, Fam.idFamilia)
 
 
+    #Dar baja Familia
    elif opcion == 4:
 
         print(Familia.ListaFamilias())
 
-        deleteFamily = int(input("Ingrese el id de la Familia que desea eliminar: "))
+        deleteAse = int(input("Ingrese el id de la Familia que desea eliminar: "))
 
-        Family = Familia.unaFamilia(deleteFamily)
+        Asenn = Familia.unaFamilia(deleteAse)
 
-        Family.deleteFamilia()
+        Asenn.deleteFamilia()
+
+        # Dar alta Familiares
+   if opcion == 5:
+       name = input("Nombre familiares")
+       edad = input("edad")
+       Fams.setFamilias(name, edad)
+       Fams.setFamiliares()  # ver
+
+       # Dar listar Familiares
+   elif opcion == 6:
+       print(Familia.ListaFamiliares())
+
+       # Modificar Familiares
+   elif opcion == 7:
+
+       print(Familiares.ListaFamiliares())
+
+       updateFamiliares = int(input("Ingrese el id del familiar que desea modificar: "))
+
+       Familiar = Familiares.unFamiliar(updateFamiliares)
+
+       Familiar.Nombre = input("Escriba el nombre del familiar: ")
+
+       Familiar.Edad = input("Escriba el edad del familiar: ")
+
+       Familiar.updateFamiliares()
 
 
 
+       # Dar baja Familiares
+   elif opcion == 8:
 
+       print(Familiares.ListaFamiliares())
+
+       deleteAse = int(input("Ingrese el id de la Familiar que desea eliminar: "))
+
+       Asenn = Familiares.unFamiliar(deleteAse)
+
+       Asenn.deleteFamiliares()
+
+
+
+   elif opcion == 9:
+
+       name = input("Nombre Asentamiento")
+       ubicacion = input("ubi")
+       Fams.setFamilias(name, ubicacion)
+       Fams.setFamiliares()  # ver
+
+   elif opcion ==10:
+       print(Asentamiento.ListaAsen())
+
+       deleteAse = int(input("Ingrese el id del Asentamiento que desea eliminar: "))
+
+       Asenn = Asentamiento.unAsentamiento(deleteAse)
+
+       Asenn.deleteAsentamiento()
+
+   elif opcion == 11:
+
+
+   elif opcion == 12:
+       print(Asentamiento.ListaAsen())

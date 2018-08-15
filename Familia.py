@@ -32,11 +32,6 @@ class Familia (object):
         bd = BD().run("SELECT * FROM Familia;")
 
         for item in bd:
-
-         #  Fami.idFamilia = item["idFamilia"]
-          # Fami.nombre= item["Nombre"]
-          # Fami.lema = item["lema"]
-           #Fami.enemigos = item["Familia_idFamilia"]
             lista.append(item)
 
         return lista
