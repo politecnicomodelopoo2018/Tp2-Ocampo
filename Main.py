@@ -47,9 +47,9 @@ while opcion != 13:
 
         print(Familia.ListaFamilias())
 
-        updateFamiliares = int(input("Ingrese el id de la familia que desea modificar: "))
+        updateAsen = int(input("Ingrese el id de la familia que desea modificar: "))
 
-        Fam = Familia.unaFamilia(updateFamiliares)
+        Fam = Familia.unaFamilia(updateAsen)
 
         Fam.nombre = input("Escriba el nombre de la familia: ")
 
@@ -86,15 +86,15 @@ while opcion != 13:
 
        print(Familiares.ListaFamiliares())
 
-       updateFamiliares = int(input("Ingrese el id del familiar que desea modificar: "))
+       updateAsen = int(input("Ingrese el id del familiar que desea modificar: "))
 
-       Familiar = Familiares.unFamiliar(updateFamiliares)
+       Aseen = Familiares.unFamiliar(updateAsen)
 
-       Familiar.Nombre = input("Escriba el nombre del familiar: ")
+       Aseen.Nombre = input("Escriba el nombre del familiar: ")
 
-       Familiar.Edad = input("Escriba el edad del familiar: ")
+       Aseen.Edad = input("Escriba el edad del familiar: ")
 
-       Familiar.updateFamiliares()
+       Aseen.updateFamiliares()
 
 
 
@@ -110,14 +110,15 @@ while opcion != 13:
        Asenn.deleteFamiliares()
 
 
-
+    #Alta Asentamiento
    elif opcion == 9:
 
        name = input("Nombre Asentamiento")
        ubicacion = input("ubi")
-       Fams.setFamilias(name, ubicacion)
-       Fams.setFamiliares()  # ver
+       Asen.setAsen(name, ubicacion)
+       Asen.setAsentamiento()  # ver
 
+    #Baja Asentamiento
    elif opcion ==10:
        print(Asentamiento.ListaAsen())
 
@@ -127,8 +128,22 @@ while opcion != 13:
 
        Asenn.deleteAsentamiento()
 
+    #Modi Asentamiento
    elif opcion == 11:
 
+       print(Asentamiento.ListaAsen())
 
+       updateAsen = int(input("Ingrese el id del Asentamiento que desea modificar: "))
+
+       Aseen = Asentamiento.unAsentamiento(updateAsen)
+
+       Aseen.Nombre = input("Escriba el nombre del Asentamiento: ")
+
+       Aseen.Ubicacion = input("Escriba la Ubicacion del Asentimento: ")
+
+       Aseen.updateAsentamiento()
+
+
+    #Lista Asentamiento
    elif opcion == 12:
        print(Asentamiento.ListaAsen())
